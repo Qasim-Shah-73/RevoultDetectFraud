@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Revoult - Home{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Welcome, {{ user.username }}!</h2>
+                <h4 class="mt-4">Balance: {{ balance }} GB</h4>
+                <br>
+                <h4 class="card-subtitle text-center mb-4">Your Transactions:</h4>
+                <ul class="list-group">
+                    {% for transaction in transactions %}
+                        <li class="list-group-item">
+                            <strong>{{ transaction.type }}- {{ transaction.amount_gb }} {{ transaction.currency }}</strong>
+                            {% if transaction.state == 'COMPLETED' %}
+                                <span class="badge badge-success float-right">Completed</span>
+                            {% elif transaction.state == 'REVERTED' %}
+                                <span class="badge badge-warning float-right">Reverted</span>
+                            {% elif transaction.state == 'FAILED' %}
+                                <span class="badge badge-danger float-right">Failed</span>
+                            {% elif transaction.state == 'DECLINED' %}
+                                <span class="badge badge-secondary float-right">Declined</span>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="text-center mt-3">
+                    <a href="{{ url_for('perform_transaction') }}" class="btn btn-light btn-block">Perform Transaction</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Revoult - Perform Transaction{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Perform Transaction</h2>
+                <form method="POST" action="{{ url_for('perform_transaction') }}" style="background-color: #ffffff; padding: 20px; border-radius: 10px;">
+                    <div class="form-group">
+                        <label for="transaction_type">Transaction Type:</label>
+                        <select class="form-control" name="transaction_type" required>
+                            <option value="TOPUP">Top Up</option>
+                            <option value="CARD_PAYMENT">Card Payment</option>
+                            <option value="FEE">Fee</option>
+                            <option value="EXCHANGE">Exchange</option>
+                            <option value="TRANSFER">Transfer</option>
+                            <option value="ATM">ATM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount_gb">Amount (GB):</label>
+                        <input type="number" class="form-control" name="amount_gb" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Currency:</label>
+                        <input list="currencies" class="form-control" name="currency" required>
+                        <datalist id="currencies">
+                            {% for currency in currency_options %}
+                                <option value="{{ currency }}">
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction_state">Transaction State:</label>
+                        <select class="form-control" name="transaction_state" required>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="REVERTED">Reverted</option>
+                            <option value="FAILED">Failed</option>
+                            <option value="DECLINED">Declined</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-light btn-block">Submit Transaction</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
