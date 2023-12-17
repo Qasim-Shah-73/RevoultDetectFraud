@@ -4,8 +4,10 @@ from sqlalchemy import func, or_
 from flask_migrate import Migrate  # Import the Migrate class
 from flask_bootstrap import Bootstrap  # Import Bootstrap
 from datetime import datetime
-#from keras.models import load_model
 import numpy as np
+import pandas as pd
+#from keras.models import load_model
+from sklearn.preprocessing import LabelEncoder
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  # Replace with your actual PostgreSQL connection details
@@ -114,6 +116,62 @@ def signin():
  #   model = load_model('path/to/your/my_model.h5')
   #  return model
 
+def preprocess_input_data(user_data, transaction_data):
+# Create DataFrames from dictionaries
+    user_data = pd.DataFrame(user_data, index=[0])
+    transaction_data = pd.DataFrame(transaction_data, index=[0])
+    # Calculate user's age
+    user_age = (datetime.now().date() - pd.to_datetime(user_data['birth_day']).dt.date.iloc[0]).days // 365
+
+    # Define age groups
+    labels = [f'{i}-{i+9}' for i in range(0, 100, 10)]
+
+    # Create 'U_AGE_GROUP' column
+    user_data['U_AGE_GROUP'] = pd.cut([user_age], bins=range(0, 101, 10), right=False, labels=False)
+    user_data['U_AGE_GROUP'] = labels[int(user_data['U_AGE_GROUP'][0])]
+
+    # Convert categorical features to numerical using LabelEncoder
+    le = LabelEncoder()
+
+    # Add your existing columns here
+    user_data['COUNTRY'] = le.fit_transform([user_data['country']])[0]
+    transaction_data['TYPE'] = le.fit_transform([transaction_data['type']])[0]
+    transaction_data['STATE'] = le.fit_transform([transaction_data['state']])[0]
+    transaction_data['CURRENCY'] = le.fit_transform([transaction_data['currency']])[0]
+
+    # Assuming you have 'AMOUNT_GBP' in transaction_data
+    transaction_data['AMOUNT_GBP'] = transaction_data['amount_gb']
+
+    # Assuming you have 'USER_AGE' in user_data
+    user_data['USER_AGE'] = user_age
+
+    # Assuming you have 'LOG_AMOUNT_GBP' in transaction_data
+    transaction_data['LOG_AMOUNT_GBP'] = np.log(transaction_data['amount_gb'])
+
+    # Add user data to transactions where they are the same
+    final_data = pd.merge(transaction_data, user_data, left_on='user_id', right_on='id', how='left', suffixes=('_transaction', '_user'))
+
+
+    # Renaming columns to make sense of data
+#    final_data = final_data.rename(columns={
+ #       'age': 'USER_AGE',
+  #      'CREATED_DATE_transaction': 'T_CREATED_DATE',
+   #     'CREATED_DATE_user': 'U_CREATED_DATE',
+    #    'BIRTH_DATE': 'U_BIRTH_DATE',
+     #   'AGE_GROUP': 'U_AGE_GROUP'
+    #})
+
+    # Reorder final data frame
+    #final_data = final_data[['ID_transaction', 'USER_ID', 'COUNTRY', 'T_CREATED_DATE', 'TYPE', 'STATE', 'AMOUNT_GBP', 'CURRENCY',
+     #                       'U_CREATED_DATE', 'U_BIRTH_DATE', 'USER_AGE', 'U_AGE_GROUP', 'TimeOfDay']]
+
+    # ... Add more columns as needed ...
+
+    # Create a NumPy array from the input data
+    #input_array = np.array(list(final_data.values())).reshape(1, -1)
+
+    return final_data
+
 def predict_transaction_outcome(user_data, transaction_data):
     # Load the model
    # model = load_my_model()
@@ -148,16 +206,17 @@ def perform_post_transaction_actions(user, transaction):
         'currency': transaction.currency
     }
 
-     # Call your H5 model prediction function
-    prediction = predict_transaction_outcome(user_data, transaction_data)
+    print(preprocess_input_data(user_data, transaction_data))
+    # Call your H5 model prediction function
+    #prediction = predict_transaction_outcome(user_data, transaction_data)
 
     # 0 means normal transaction, do nothing
-    if prediction == 0:
-        return
+    #if prediction == 0:
+    #    return
 
     # 1 means potential issue, lock the user
-    user.is_locked = True
-    db.session.commit()
+    #user.is_locked = True
+    #db.session.commit()
 
 @app.route('/perform_transaction', methods=['GET', 'POST'])
 def perform_transaction():
