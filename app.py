@@ -6,7 +6,9 @@ from flask_bootstrap import Bootstrap  # Import Bootstrap
 from datetime import datetime
 import numpy as np
 import pandas as pd
-#from keras.models import load_model
+import requests
+import holidays
+from keras.models import load_model
 from sklearn.preprocessing import LabelEncoder
 
 app = Flask(__name__)
@@ -111,10 +113,10 @@ def signin():
 
     return render_template('signin.html')
 
-#def load_my_model():
+def load_my_model():
     # Load your H5 model
- #   model = load_model('path/to/your/my_model.h5')
-  #  return model
+    model = load_model('fraud_detect_revoult1.h5')
+    return model
 
 def preprocess_input_data(user_data, transaction_data):
 # Create DataFrames from dictionaries
@@ -153,17 +155,22 @@ def preprocess_input_data(user_data, transaction_data):
 
 
     # Renaming columns to make sense of data
-#    final_data = final_data.rename(columns={
- #       'age': 'USER_AGE',
-  #      'CREATED_DATE_transaction': 'T_CREATED_DATE',
-   #     'CREATED_DATE_user': 'U_CREATED_DATE',
-    #    'BIRTH_DATE': 'U_BIRTH_DATE',
-     #   'AGE_GROUP': 'U_AGE_GROUP'
-    #})
+    final_data = final_data.rename(columns={
+        'age': 'USER_AGE',
+        'CREATED_DATE_transaction': 'T_CREATED_DATE',
+        'CREATED_DATE_user': 'U_CREATED_DATE',
+        'BIRTH_DATE': 'U_BIRTH_DATE',
+        'AGE_GROUP': 'U_AGE_GROUP'
+    })
 
-    # Reorder final data frame
-    #final_data = final_data[['ID_transaction', 'USER_ID', 'COUNTRY', 'T_CREATED_DATE', 'TYPE', 'STATE', 'AMOUNT_GBP', 'CURRENCY',
-     #                       'U_CREATED_DATE', 'U_BIRTH_DATE', 'USER_AGE', 'U_AGE_GROUP', 'TimeOfDay']]
+    final_data = final_data[
+        ['id_transaction', 'user_id', 'country', 'created_date_transaction', 'type', 'state', 'amount_gb', 'currency', 'created_date_user', 'birth_day', 'U_AGE_GROUP']
+    ]
+
+    # Display the reordered DataFrame
+    print(final_data.to_string(max_colwidth=None))
+
+
 
     # ... Add more columns as needed ...
 
@@ -174,7 +181,7 @@ def preprocess_input_data(user_data, transaction_data):
 
 def predict_transaction_outcome(user_data, transaction_data):
     # Load the model
-   # model = load_my_model()
+    model = load_my_model()
 
     # Convert user and transaction data to a format suitable for your model
     # Example: you might need to preprocess the data, scale it, etc.
