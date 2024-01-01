@@ -392,10 +392,10 @@ def preprocess_input_data(user_data, transaction_data):
     return final_data
 
 def predict_transaction_outcome(preprocessed_data):
-    preprocessed_data = preprocessed_data.iloc[:, :9]
+    preprocessed_data = preprocessed_data.iloc[:, :9].join(preprocessed_data.iloc[:, -81:])
     print(preprocessed_data)
     # Load the model
-    model = load_model('fraud_detect_revoult1.h5')  # Corrected the model name
+    model = load_model('fraud_detect_revoult12.h5')  # Corrected the model name
     # Make a prediction
     prediction = model.predict(preprocessed_data)
 
