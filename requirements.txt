@@ -23,7 +23,8 @@ google-pasta==0.2.0
 greenlet==3.0.3
 grpcio==1.60.0
 h11==0.14.0
-h5py>=3.8.0,<3.9.0
+h5py~=3.1.0
+#h5py>=3.8.0,<3.9.0
 holidays==0.27.1
 idna==3.6
 importlib-metadata==6.7.0
