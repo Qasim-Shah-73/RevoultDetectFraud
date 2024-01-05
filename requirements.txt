@@ -84,8 +84,8 @@ pandas==1.3.5
 requests==2.31.0
 holidays==0.27.1
 joblib==1.0.1
-tensorflow==2.11.0
-tensorboard==2.11.2
+tensorflow
+tensorboard
 scikit-learn==1.0.2
-protobuf==3.19.4
+protobuf
 
