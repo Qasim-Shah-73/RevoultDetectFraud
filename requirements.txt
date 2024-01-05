@@ -84,6 +84,6 @@ pandas==1.3.1
 requests==2.26.0
 holidays==0.11.1
 joblib==1.0.1
-tensorflow==2.5.0
+tensorflow==2.5.0  # Assuming you are using TensorFlow with Keras
 scikit-learn==0.24.2
 
