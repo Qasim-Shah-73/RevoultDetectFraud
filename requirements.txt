@@ -18,7 +18,7 @@ Flask-Migrate==4.0.5
 flask-sqlalchemy==3.0.5
 flatbuffers==23.5.26
 gast==0.4.0
-google-auth==2.25.2
+google-auth>=1.6.3,<2.0.0
 google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
 greenlet==3.0.3
