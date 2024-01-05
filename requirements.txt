@@ -43,7 +43,7 @@ opt-einsum==3.3.0
 packaging==23.2
 pandas==1.3.5
 pipreqs==0.4.13
-protobuf==3.19.7
+protobuf>=3.19.0,<4.0.0
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
 #pydantic==1.8.3  # Note: Adjust version based on your application requirements
