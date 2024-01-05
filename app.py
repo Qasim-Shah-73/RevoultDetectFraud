@@ -15,7 +15,7 @@ from keras.models import load_model
 from sklearn.preprocessing import LabelEncoder
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  # Replace with your actual PostgreSQL connection details
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'your_secret_key'  # Change this to a secure random key in production
 
