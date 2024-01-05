@@ -1,4 +1,4 @@
-absl-py==0.14.1
+absl-py
 alembic==1.12.1
 annotated-types==0.5.0
 anyio==3.7.1
