@@ -46,8 +46,8 @@ pipreqs==0.4.13
 protobuf==3.19.6
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
-pydantic==1.8.3  # Note: Adjust version based on your application requirements
-pydantic-core==2.14.6
+#pydantic==1.8.3  # Note: Adjust version based on your application requirements
+#pydantic-core==2.14.6
 python-dateutil==2.8.2
 pytz==2023.3.post1
 requests==2.31.0
