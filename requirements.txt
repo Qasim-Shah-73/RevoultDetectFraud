@@ -15,7 +15,7 @@ Flask==2.2.5
 Flask-Bootstrap==3.3.7.1
 Flask-Migrate==4.0.5
 flask-sqlalchemy==3.0.5
-flatbuffers==23.5.26
+flatbuffers>=1.12.0,<1.13.0
 gast==0.4.0
 google-auth>=1.6.3,<2.0.0
 google-auth-oauthlib==0.4.6
