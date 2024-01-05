@@ -87,5 +87,5 @@ joblib==1.0.1
 tensorflow==2.11.0
 tensorboard==2.11.2
 scikit-learn==1.0.2
-protobuf==3.19.6
+protobuf==3.19.4
 
