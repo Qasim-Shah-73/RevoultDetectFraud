@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func, or_
 from flask_migrate import Migrate
-from sqlalchemy.orm import relationship
 from flask_bootstrap import Bootstrap
 from datetime import datetime
 import numpy as np

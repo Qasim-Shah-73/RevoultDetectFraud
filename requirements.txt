@@ -1,77 +1,88 @@
-absl-py
-alembic>=1.0,<1.12.1
-annotated-types==0.5.0
-anyio==3.7.1
-astunparse==1.6.3
-cachetools==5.3.2
-certifi==2023.11.17
-charset-normalizer==3.3.2
-click==8.1.7
-colorama==0.4.6
-docopt==0.6.2
-dominate==2.9.1
-exceptiongroup==1.2.0
-Flask==2.2.5
+# absl-py
+# alembic>=1.0,<1.12.1
+# annotated-types==0.5.0
+# anyio==3.7.1
+# astunparse==1.6.3
+# cachetools==5.3.2
+# certifi==2023.11.17
+# charset-normalizer==3.3.2
+# click==8.1.7
+# colorama==0.4.6
+# docopt==0.6.2
+# dominate==2.9.1
+# exceptiongroup==1.2.0
+# Flask==2.2.5
+# Flask-Bootstrap==3.3.7.1
+# Flask-Migrate==4.0.5
+# flask-sqlalchemy==3.0.5
+# flatbuffers>=1.12.0,<1.13.0
+# gast==0.4.0
+# google-auth>=1.6.3,<2.0.0
+# google-auth-oauthlib==0.4.6
+# google-pasta==0.2.0
+# greenlet==3.0.3
+# grpcio==1.60.0
+# h11==0.14.0
+# h5py~=3.1.0
+# #h5py>=3.8.0,<3.9.0
+# holidays==0.27.1
+# idna==3.6
+# importlib-metadata==6.7.0
+# importlib-resources==5.12.0
+# itsdangerous==2.1.2
+# Jinja2==3.1.2
+# joblib==1.3.2
+# keras==2.11.0
+# libclang==16.0.6
+# Mako==1.2.4
+# Markdown==3.4.4
+# MarkupSafe==2.1.3
+# numpy==1.19.5
+# oauthlib==3.2.2
+# opt-einsum==3.3.0
+# packaging==23.2
+# pandas==1.3.5
+# pipreqs==0.4.13
+# protobuf>=3.19.0,<4.0.0
+# pyasn1==0.5.1
+# pyasn1-modules==0.3.0
+# #pydantic==1.8.3  # Note: Adjust version based on your application requirements
+# #pydantic-core==2.14.6
+# python-dateutil==2.8.2
+# pytz==2023.3.post1
+# requests==2.31.0
+# requests-oauthlib==1.3.1
+# rsa==4.9
+# scikit-learn==1.0.2
+# scipy==1.7.3
+# six>=1.15.0,<2.0.0
+# sniffio==1.3.0
+# sqlalchemy>=2.0.0,<2.0.23
+# starlette==0.27.0
+# tensorboard==2.6
+# tensorboard-data-server==0.6.1
+# tensorboard-plugin-wit==1.8.1
+# tensorflow==2.6.0
+# tensorflow-estimator==2.11.0
+# tensorflow-io-gcs-filesystem==0.31.0
+# termcolor>=1.1.0,<1.2.0
+# threadpoolctl==3.1.0
+# typing-extensions>=3.7.4,<3.10.0
+# urllib3==2.0.7
+# uvicorn==0.22.0
+# visitor==0.1.3
+# Werkzeug==2.2.3
+# wrapt>=1.12.1,<1.17.0
+# yarg==0.1.9
+# zipp==3.15.0
+Flask==2.0.1
+Flask-SQLAlchemy==3.0.0
+Flask-Migrate==3.0.1
 Flask-Bootstrap==3.3.7.1
-Flask-Migrate==4.0.5
-flask-sqlalchemy==3.0.5
-flatbuffers>=1.12.0,<1.13.0
-gast==0.4.0
-google-auth>=1.6.3,<2.0.0
-google-auth-oauthlib==0.4.6
-google-pasta==0.2.0
-greenlet==3.0.3
-grpcio==1.60.0
-h11==0.14.0
-h5py~=3.1.0
-#h5py>=3.8.0,<3.9.0
-holidays==0.27.1
-idna==3.6
-importlib-metadata==6.7.0
-importlib-resources==5.12.0
-itsdangerous==2.1.2
-Jinja2==3.1.2
-joblib==1.3.2
-keras==2.11.0
-libclang==16.0.6
-Mako==1.2.4
-Markdown==3.4.4
-MarkupSafe==2.1.3
-numpy==1.19.5
-oauthlib==3.2.2
-opt-einsum==3.3.0
-packaging==23.2
-pandas==1.3.5
-pipreqs==0.4.13
-protobuf>=3.19.0,<4.0.0
-pyasn1==0.5.1
-pyasn1-modules==0.3.0
-#pydantic==1.8.3  # Note: Adjust version based on your application requirements
-#pydantic-core==2.14.6
-python-dateutil==2.8.2
-pytz==2023.3.post1
-requests==2.31.0
-requests-oauthlib==1.3.1
-rsa==4.9
-scikit-learn==1.0.2
-scipy==1.7.3
-six>=1.15.0,<2.0.0
-sniffio==1.3.0
-sqlalchemy>=2.0.0,<2.0.23
-starlette==0.27.0
-tensorboard==2.6
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.6.0
-tensorflow-estimator==2.11.0
-tensorflow-io-gcs-filesystem==0.31.0
-termcolor>=1.1.0,<1.2.0
-threadpoolctl==3.1.0
-typing-extensions>=3.7.4,<3.10.0
-urllib3==2.0.7
-uvicorn==0.22.0
-visitor==0.1.3
-Werkzeug==2.2.3
-wrapt>=1.12.1,<1.17.0
-yarg==0.1.9
-zipp==3.15.0
+numpy==1.21.2
+pandas==1.3.1
+requests==2.26.0
+holidays==0.11.1
+joblib==1.0.1
+tensorflow==2.5.0
+scikit-learn==0.24.2
